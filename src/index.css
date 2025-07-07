@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400;700;900&family=Sora:wght@100..800&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-gradient-cyber text-white font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-eco-600 to-eco-500 hover:from-eco-700 hover:to-eco-600 
+           text-white font-semibold py-3 px-6 rounded-xl 
+           transition-all duration-300 ease-in-out
+           transform hover:scale-105 active:scale-95
+           shadow-lg hover:shadow-neon;
+  }
+
+  .btn-secondary {
+    @apply bg-asphalt-800 hover:bg-asphalt-700 
+           text-neon-green border-2 border-neon-green/20 hover:border-neon-green/60
+           font-semibold py-3 px-6 rounded-xl 
+           transition-all duration-300 ease-in-out
+           transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-asphalt-800/50 
+           text-asphalt-300 hover:text-white
+           font-medium py-2 px-4 rounded-lg 
+           transition-all duration-200 ease-in-out;
+  }
+
+  .card {
+    @apply bg-asphalt-800/80 backdrop-blur-sm border border-asphalt-700/50
+           rounded-2xl p-6 shadow-2xl;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 ease-in-out
+           hover:scale-105 hover:shadow-neon/20
+           hover:border-neon-green/30;
+  }
+
+  .input-field {
+    @apply bg-asphalt-800/90 border-2 border-asphalt-600 
+           text-white placeholder-asphalt-400
+           rounded-xl px-4 py-3 w-full
+           focus:border-neon-green focus:ring-0 focus:outline-none
+           transition-all duration-200 ease-in-out;
+  }
+
+  .text-glow {
+    @apply text-neon-green animate-glow;
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 255, 20, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .loading-spinner {
+    @apply inline-block w-6 h-6 border-2 border-asphalt-600 border-t-neon-green rounded-full animate-spin;
+  }
+}
+
+@layer utilities {
+  .text-shadow-neon {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .backdrop-blur-cyber {
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-asphalt-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-asphalt-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-eco-600;
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Dark mode specific adjustments */
+.dark {
+  color-scheme: dark;
+}
+
+/* Animation for camera button */
+@keyframes camera-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(57, 255, 20, 0);
+  }
+}
+
+.camera-pulse {
+  animation: camera-pulse 2s infinite;
+}
