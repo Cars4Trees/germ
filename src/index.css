@@ -6,10 +6,6 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  
   body {
     @apply bg-gradient-cyber text-white font-sans;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -28,45 +24,70 @@
            text-white font-semibold py-3 px-6 rounded-xl 
            transition-all duration-300 ease-in-out
            transform hover:scale-105 active:scale-95
-           shadow-lg hover:shadow-neon;
+           shadow-lg;
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
   }
 
   .btn-secondary {
     @apply bg-asphalt-800 hover:bg-asphalt-700 
-           text-neon-green border-2 border-neon-green/20 hover:border-neon-green/60
-           font-semibold py-3 px-6 rounded-xl 
+           text-neon-green border-2 font-semibold py-3 px-6 rounded-xl 
            transition-all duration-300 ease-in-out
            transform hover:scale-105 active:scale-95;
+    border-color: rgba(57, 255, 20, 0.2);
+  }
+  
+  .btn-secondary:hover {
+    border-color: rgba(57, 255, 20, 0.6);
   }
 
   .btn-ghost {
-    @apply bg-transparent hover:bg-asphalt-800/50 
+    @apply bg-transparent 
            text-asphalt-300 hover:text-white
            font-medium py-2 px-4 rounded-lg 
            transition-all duration-200 ease-in-out;
   }
+  
+  .btn-ghost:hover {
+    @apply bg-asphalt-800;
+    background-color: rgba(30, 41, 59, 0.5);
+  }
 
   .card {
-    @apply bg-asphalt-800/80 backdrop-blur-sm border border-asphalt-700/50
+    @apply bg-asphalt-800 backdrop-blur-sm border border-asphalt-700
            rounded-2xl p-6 shadow-2xl;
+    background-color: rgba(30, 41, 59, 0.8);
+    border-color: rgba(71, 85, 105, 0.5);
   }
 
   .card-hover {
     @apply card transition-all duration-300 ease-in-out
-           hover:scale-105 hover:shadow-neon/20
-           hover:border-neon-green/30;
+           hover:scale-105;
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    border-color: rgba(57, 255, 20, 0.3);
   }
 
   .input-field {
-    @apply bg-asphalt-800/90 border-2 border-asphalt-600 
+    @apply bg-asphalt-800 border-2 border-asphalt-600 
            text-white placeholder-asphalt-400
            rounded-xl px-4 py-3 w-full
-           focus:border-neon-green focus:ring-0 focus:outline-none
+           focus:ring-0 focus:outline-none
            transition-all duration-200 ease-in-out;
+    background-color: rgba(30, 41, 59, 0.9);
+  }
+  
+  .input-field:focus {
+    border-color: #39ff14;
   }
 
   .text-glow {
-    @apply text-neon-green animate-glow;
+    color: #39ff14;
+    animation: glow 2s ease-in-out infinite alternate;
   }
 
   .cyber-grid {
@@ -77,7 +98,8 @@
   }
 
   .loading-spinner {
-    @apply inline-block w-6 h-6 border-2 border-asphalt-600 border-t-neon-green rounded-full animate-spin;
+    @apply inline-block w-6 h-6 border-2 border-asphalt-600 rounded-full animate-spin;
+    border-top-color: #39ff14;
   }
 }
 
@@ -92,6 +114,10 @@
 
   .touch-manipulation {
     touch-action: manipulation;
+  }
+  
+  .shadow-neon {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
   }
 }
 
@@ -125,7 +151,7 @@
   color-scheme: dark;
 }
 
-/* Animation for camera button */
+/* Animation keyframes */
 @keyframes camera-pulse {
   0%, 100% { 
     transform: scale(1); 
@@ -134,6 +160,15 @@
   50% { 
     transform: scale(1.05);
     box-shadow: 0 0 0 10px rgba(57, 255, 20, 0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #39ff14;
+  }
+  to {
+    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
   }
 }
 
